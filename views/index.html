@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sinatra Styles</title>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css" /> 
+</head>
+
+<body>
+ <h1>Welcome to Wiki<h1>
+ 	<h2>Hitchhiker's Guide to the Galaxy</h2>
+
+ 	<ul>
+ 		{{#entries}}
+ 			{{title}}
+ 		{{/entries}}
+	</ul>
+	<a href= "/new_entry">Add an article</a>
+</body>
+</html>
+

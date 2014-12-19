@@ -7,6 +7,6 @@ ActiveRecord::Base.establish_connection({
   :database => "wiki"
   })
 
-  ActiveRecord::Base.logger = Logger.new(STDOUT) # <-- optional, it's a debugging tool
+  ActiveRecord::Base.logger = Logger.new(STDOUT) # <-- optional debugging tool
 
   

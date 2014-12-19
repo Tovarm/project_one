@@ -1,6 +1,21 @@
 require 'active_record'
 
 
-class Wiki < ActiveRecord::Base
+class Author < ActiveRecord::Base
+
+end
+
+
+class Entry < ActiveRecord::Base
+
+end
+
+
+class Subscriber < ActiveRecord::Base
 	
+end
+
+
+class Edit < ActiveRecord::Base
+
 end
