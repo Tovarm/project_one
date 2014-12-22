@@ -1,31 +1,18 @@
 
-
 CREATE DATABASE wiki;
 
-CREATE TABLE authors(
-	id serial primary key, 
-	name varchar(50), 
-	how_many_entries integer, 
-	entry_ids integer);
+# CREATE TABLE entries(id serial primary key, author_id integer, date date, title varchar(100), content text, subscriber_id integer, edit_number integer, edit_date date, edit_title varchar(100), edit_content text);
 
-CREATE TABLE entries(
-	id serial primary key, 
-	title varchar(100), 
-	author varchar(100), 
-	date date, time time, 
-	content text, 
-	subscriber_ids integer, 
-	history text);
+# CREATE TABLE authors(id serial primary key, name varchar(50), entry_id integer);
 
-CREATE TABLE subscribers(
-	id serial primary key, 
-	email text, 
-	phone_number varchar(11), 
-	entry_id integer);
 
-CREATE TABLE edits(id serial primary key,
-	author_id integer,
-	entry_id integer,
-	date date,
-	title varchar(100),
-	content text);
+# CREATE TABLE subscribers(id serial primary key, name varchar(50), email text,phone varchar(14), entry_id integer);
+
+
+CREATE TABLE entries(entry_id serial primary key, author_id integer, 
+
+CREATE TABLE authors(author_id serial primary key, name varchar(50), entry_id integer);
+
+CREATE TABLE subscribers(subscriber_id serial primary key, name varchar(50), email text, phone varchar(14));
+
+CREATE TABLE edits(edit_id serial primary key, entry_id integer, author_id integer, edit_number integer, edit_timestamp date, edit_title text, edit_content text); 

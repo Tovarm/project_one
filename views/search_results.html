@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Confirm</title>
+	<meta=charset="UTF-8">
+	<title>search results</title>
 </head>
+
 <body>
+
 	<form action="/search_results" method="POST">
      <p><label>
       Search:
@@ -13,13 +16,7 @@
         <input type="submit"></input>
   </form>
   
-	<h1>You've successfully a new entry!</h1>
-
-		<label>Title: {{title}}</label><br/>
-		<label>Content: {{content}}</label><br/>
-		<label>Author: {{author}}</label><br/>
-		
-		
-		<button><a href="/">Home</a></button>
+	<p>Sorry, {{search}} doesn't exist. Add it here!</p>
 </body>
+
 </html>

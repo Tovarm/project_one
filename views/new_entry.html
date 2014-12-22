@@ -2,26 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Create an Article</title>
+  <title>Create Entry</title>
 </head>
 
 <body>
 
-  <h1>Create a new entry here:</h1>
+  <form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="enter search term here"/>  
+    </label></p>
+        <input type="submit"></input>
+  </form>
+  
+  <h1>Create a new entry here:</h1> 
   <form action="/new_entry" method="POST">
-
     <label>
       Title:
       <input type="text" name="title" placeholder="title"/>  
     </label>
     
     <label>
-      	Content:
+      Content:
 		<input type="text" name="content" placeholder="content"/>  
 	 </label>   
 
 	 <label>
-	 	Author:
+	 	 Author:
 	 	<input type="text" name="author" placeholder="author"/>
 	 </label>
 

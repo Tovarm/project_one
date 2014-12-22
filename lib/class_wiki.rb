@@ -14,8 +14,3 @@ end
 class Subscriber < ActiveRecord::Base
 	
 end
-
-
-class Edit < ActiveRecord::Base
-
-end

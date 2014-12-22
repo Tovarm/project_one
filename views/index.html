@@ -5,16 +5,19 @@
 	<title>Sinatra Styles</title>
 	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css" /> 
 </head>
+<form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="enter search term here"/>  
+    </label></p>
+        <input type="submit"></input>
+  </form>
 
 <body>
  <h1>Welcome to Wiki<h1>
  	<h2>Hitchhiker's Guide to the Galaxy</h2>
 
- 	<ul>
- 		{{#entries}}
- 			{{title}}
- 		{{/entries}}
-	</ul>
+ 	
 	<a href= "/new_entry">Add an article</a>
 </body>
 </html>
