@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Confirm</title>
+</head>
+<body>
+	<form action="/search_results" method="POST">
+		<p><label>
+			Search:
+			<input type="text" name="search" placeholder="enter search term here"/>  
+		</label></p>
+		<input type="submit"></input>
+	</form>
+
+	<h1>You've successfully subscribed to {{entry_title}}</h1>
+
+	<label>Name: {{name}}</label><br/>
+	<label>Email: {{email}}</label><br/>
+	<label>Phone: {{phone}}</label><br/>
+	
+	
+	<button><a href="/">Home</a></button>
+</body>
+</html>

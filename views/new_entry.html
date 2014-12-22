@@ -31,22 +31,13 @@
 	 	 Author:
     <select name="select">
   <option value="value1" selected>Choose an existing author</option> 
-  <option value="value2">#Tova</option> 
+  <option value="value2">Tova</option> 
   <option value="value3">Ilana</option>
   <option value="value4">Sarah</option>
 </select>
      <input type="submit"/>
 
-      <p>or add a new author</p>
-     <form action="/new_author" method="POST">
-  <label>
-    Author Name:
-  <input type="text" name="author_name" placeholder="enter author name here"/>
-  </label>
-
-  <input type="submit"/>
-  
-  </form>
+      <p>or click <a href='/new_author'>here</a> to add yourself as an author</p>
   <button><a href = '/'>CANCEL and go back HOME</a></button>
 </body>
 </html>

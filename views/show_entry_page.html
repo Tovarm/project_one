@@ -9,12 +9,12 @@
 <body>
 
 	<form action="/search_results" method="POST">
-     <p><label>
-      Search:
-      <input type="text" name="search" placeholder="enter search term here"/>  
-    </label></p>
-        <input type="submit"></input>
-  </form>
+		<p><label>
+			Search:
+			<input type="text" name="search" placeholder="enter search term here"/>  
+		</label></p>
+		<input type="submit"></input>
+	</form>
 
 	<h1>TEST</h1>
 	<h1>{{entry_title}}</h1>
@@ -24,5 +24,23 @@
 		{{author_name}}
 		{{date}}
 	</footer>
+
+
+	<p>To receive updates about this topic, fill out the form below</p>
+
+	<form action="/confirm_subscription" method="POST">
+		<p><label>
+			Name:
+			<input type="text" name="name" placeholder="name"/>  
+		</label></p>
+			<p><label>
+			Title to subscribe to:
+			<input type="text" name="subscription_title" placeholder="title"/>  
+		</label></p>
+		<input type="submit"></input>
+	</form>
+
+	<button><a href="/">Home</a></button>
+
 </body>
 </html>
