@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <title>Create Entry</title>
 </head>
 
@@ -19,20 +19,32 @@
   <form action="/new_entry" method="POST">
     <label>
       Title:
-      <input type="text" name="title" placeholder="title"/>  
+      <input type="text" name="entry_title" placeholder="title"/>  
     </label>
     
     <label>
       Content:
-		<input type="text" name="content" placeholder="content"/>  
+		<input type="text" name="entry_content" placeholder="content"/>  
 	 </label>   
 
 	 <label>
 	 	 Author:
-	 	<input type="text" name="author" placeholder="author"/>
-	 </label>
+    <select name="select">
+  <option value="value1" selected>Choose an existing author</option> 
+  <option value="value2">#Tova</option> 
+  <option value="value3">Ilana</option>
+  <option value="value4">Sarah</option>
+</select>
+     <input type="submit"/>
 
-    <input type="submit"></input>
+      <p>or add a new author</p>
+     <form action="/new_author" method="POST">
+  <label>
+    Author Name:
+  <input type="text" name="author_name" placeholder="enter author name here"/>
+  </label>
+
+  <input type="submit"/>
   
   </form>
   <button><a href = '/'>CANCEL and go back HOME</a></button>

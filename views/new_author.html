@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<title>Sinatra Styles</title>
-	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css" /> 
+	<title>New Author</title>
 </head>
+
+<body>
 <form action="/search_results" method="POST">
      <p><label>
       Search:
@@ -14,12 +15,16 @@
   </form>
 
 
-<body>
-	<h1>Welcome to Wiki<h1>
- 	<h2>Hitchhiker's Guide to the Galaxy</h2>
+<form action="/new_author" method="POST">
+	<label>
+		Author Name:
+	<input type="text" name="author_name" placeholder="enter author name here"/>
+	</label>
 
- 	
-	<a href= "/new_entry">Add an article</a>
+	<input type="submit"></input>
+
+
+
+
+</form>
 </body>
-</html>
-

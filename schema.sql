@@ -9,7 +9,7 @@ CREATE DATABASE wiki;
 # CREATE TABLE subscribers(id serial primary key, name varchar(50), email text,phone varchar(14), entry_id integer);
 
 
-CREATE TABLE entries(entry_id serial primary key, author_id integer, 
+CREATE TABLE entries(entry_id serial primary key, author_id integer, subscriber_id integer, entry_title varchar(255), entry_content text);
 
 CREATE TABLE authors(author_id serial primary key, name varchar(50), entry_id integer);
 

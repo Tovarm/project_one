@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta=charset="UTF-8"/>
-	<title>search results</title>
+  <meta charset="UTF-8"/>
+  <title>Confirm</title>
 </head>
 
 <body>
 
-	<form action="/search_results" method="POST">
+<form action="/search_results" method="POST">
      <p><label>
       Search:
       <input type="text" name="search" placeholder="enter search term here"/>  
@@ -16,7 +15,6 @@
         <input type="submit"></input>
   </form>
 
-	<p>Sorry, {{"#{params["search"]}"}} doesn't exist. Add it here!</p>
+	
+	<h1>You are added as author {{author_name}}</h1>
 </body>
-
-</html>
