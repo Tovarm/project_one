@@ -24,12 +24,14 @@ get '/' do
 end
 
 get '/new_entry' do
-	File.read('./views/new_entry.html')
+	authors = Author.all
+	Mustache.render(File.read('./views/new_entry.html'), {authors: authors.as_json})
 end
 
 post '/new_entry' do
+binding.pry
 	Entry.create(entry_title: params["entry_title"], entry_content: params["entry_content"], author_id: params[
-		"author"])
+		"author_id"])
 	Mustache.render(File.read('./views/confirm_entry.html'), params.as_json)
 end
 
@@ -69,7 +71,7 @@ end
 # 	Mustache.render(File.read('./views/show_entry_page.html'))
 # end
 
-# get '/all_authors' do
-# 	author = Author.all
-# 	Mustache.render(File.read('./views/all_authors.html'))
-# end
+get '/all_authors' do
+	author = Author.all
+	Mustache.render(File.read('./views/all_authors.html'))
+end

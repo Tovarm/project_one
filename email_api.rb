@@ -21,7 +21,7 @@ end
 
 mail = SendGrid::Mail.new do |message|
   # message.to = subscriber
-  message.from = 'tovamosk@gmail.com'
+  message.from = 'hello@blobby.com'
   message.subject = 'Hello world!'
   message.text = 'Here I am'
 end
