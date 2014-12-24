@@ -1,16 +1,21 @@
 require 'active_record'
 
 
-class Author < ActiveRecord::Base
+
+class Entry < ActiveRecord::Base
 
 end
 
-
-class Entry < ActiveRecord::Base
+class Author < ActiveRecord::Base
 
 end
 
 
 class Subscriber < ActiveRecord::Base
 	
+end
+
+
+class Subscription < ActiveRecord::Base
+
 end

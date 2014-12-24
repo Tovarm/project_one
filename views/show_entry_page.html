@@ -17,30 +17,42 @@
 	</form>
 
 	<h1>TEST</h1>
-	<h1>{{entry_title}}</h1>
-	<p>{{entry_content}}</p>
-
+	{{#entry}}
+		<h1>{{entry_title}}</h1>
+		<p>{{entry_content}}</p>
 	<footer>
-		{{author_name}}
+		{{author_first_name}} {{author_last_name}}
 		{{date}}
 	</footer>
+	{{/entry}}
 
 
 	<p>To receive updates about this topic, fill out the form below</p>
 
 	<form action="/confirm_subscription" method="POST">
-		<p><label>
-			Name:
-			<input type="text" name="name" placeholder="name"/>  
-		</label></p>
-			<p><label>
-			Title to subscribe to:
-			<input type="text" name="subscription_title" placeholder="title"/>  
-		</label></p>
+
+	<label>
+	First Name:
+		<input type="text" name="sub_first_name" placeholder="subcriber first name"/>
+	</label>
+	
+	Last Name:
+	<input type="text" name="sub_last_name" placeholder="subcriber last name"/>
+	</label>
+
+	 <label>
+      Email:
+		<input type="text" name="email" placeholder="email"/>  
+	 </label>   
+ 
+ 	<label>
+      Phone:
+		<input type="text" name="phone" placeholder="phone"/>  
+	 </label> 
+	
 		<input type="submit"></input>
 	</form>
 
 	<button><a href="/">Home</a></button>
-
 </body>
 </html>
