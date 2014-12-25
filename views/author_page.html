@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Author</title>
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css" /> 
+</head>
+<body>
+  <form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="enter search term here"/>  
+    </label></p>
+        <input type="submit"></input>
+  </form>
+
+
+  <h1>{{author.author_name}}</h1>
+
+  <h2>Welcome to my author page</h2>
+  <p>---------------------------</p>
+    {{#authors}}
+      <label>Name:{{entry_id}}</label><br/>
+    {{/authors}}
+  <p>---------------------------</p>
+    
+    <button><a href="/">Home</a></button>
+</body>
+</html>

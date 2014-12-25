@@ -18,8 +18,13 @@
 	<h1>Welcome to Wiki<h1>
  	<h2>Hitchhiker's Guide to the Galaxy</h2>
 
+  <h2>Explore this Wiki</h2>
+    {{#entries}}
+        <a href="/entry/{{entry_id}}">{{entry_title}}</a></br>
+    {{/entries}}
+
  	
-	<a href="/new_entry">Add an article</a>
+	<h2><button><a href="/new_entry">Add an article</a></button></h2>
 </body>
 
 </html>

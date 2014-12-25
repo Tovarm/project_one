@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
 </head>
 
 <body>
@@ -16,29 +17,22 @@
 		<input type="submit"></input>
 	</form>
 
-	<h1>TEST</h1>
 	{{#entry}}
 		<h1>{{entry_title}}</h1>
 		<p>{{entry_content}}</p>
-	<footer>
-		{{author_first_name}} {{author_last_name}}
-		{{date}}
-	</footer>
+		<p>-----------------</p>
+		<p>{{created_at}}</p>
 	{{/entry}}
+		<p>-----------------</p>
+		<!-- {{#authors}} -->
+			<p>Author:</p> <p><a href="/author/{{author_id}}">{{author_name}}</a></p>
+		<!-- {{/authors}} -->
+		
+	<p>Sign up to receive updates about this entry- click <a href="/subscribe">here</a> and fill out the subscribe form</p>
 
+	<!-- <p>To receive updates about this topic, fill out the form below</p> -->
 
-	<p>To receive updates about this topic, fill out the form below</p>
-
-	<form action="/confirm_subscription" method="POST">
-
-	<label>
-	First Name:
-		<input type="text" name="sub_first_name" placeholder="subcriber first name"/>
-	</label>
-	
-	Last Name:
-	<input type="text" name="sub_last_name" placeholder="subcriber last name"/>
-	</label>
+	<!-- <form action="/subscribe" method="POST">
 
 	 <label>
       Email:
@@ -51,8 +45,8 @@
 	 </label> 
 	
 		<input type="submit"></input>
-	</form>
-
+	</form> -->
+	<button><a href="/delete/:id">Delete this entry<a></button>
 	<button><a href="/">Home</a></button>
 </body>
 </html>

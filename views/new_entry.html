@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Create Entry</title>
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
 </head>
 
 <body>
@@ -17,19 +18,21 @@
   
   <h1>Create a new entry here:</h1> 
   <form action="/new_entry" method="POST">
+    
+    <label>
+     Author:
+  <select type="text" name= "author_id">
+      <option value="0"></option>
+    {{#authors}}
+      <option value="{{author_id}}">{{author_name}}</option>
+    {{/authors}}
+  </select>
+  </label>
+
     <label>
       Title:
       <input type="text" name="entry_title" placeholder="title"/>  
     </label>
-    
-
-   <label>
-     Author:
-  <select name= "author_dropdown">
-    {{#authors}}
-      <option value="{{author_id}}">{{author_first_name}} {{author_last_name}}</option>
-    {{/authors}}
-  </select>
 
     <label>
       Content:

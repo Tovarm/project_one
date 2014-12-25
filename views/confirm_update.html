@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta=charset="UTF-8"/>
-	<title>search results</title>
+  <meta charset="UTF-8"/>
+  <title>Confirm</title>
   <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
 </head>
-
 <body>
-
 	<form action="/search_results" method="POST">
      <p><label>
       Search:
@@ -17,9 +14,13 @@
         <input type="submit"></input>
   </form>
 
-	<p>Sorry, {{"#{params["search"]}"}} doesn't exist. Add it here!</p>
+	<h1>You've successfully updated an entry</h1>
+
+		<label>Title: {{entry_title}}</label><br/>
+		<label>Content: {{entry_content}}</label><br/>
+		<!-- <label>Author:{{author_name}}</label><br/> -->
+		
+		
+		<button><a href="/">Home</a></button>
 </body>
-
-<button><a href="/">Home</a></button>
-
 </html>

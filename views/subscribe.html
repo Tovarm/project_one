@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>Subscribe</title>
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
 </head>
 
 <body>
@@ -14,16 +15,8 @@
         <input type="submit"></input>
   </form>
 
-
-<form action="/confirm_subscription" method="POST">
-	<label>
-	First Name:
-	<input type="text" name="sub_first_name" placeholder="subscriber first name"/>
-	</label>
-	
-	Last Name:
-	<input type="text" name="sub_first_name" placeholder="subscriber last name"/>
-	</label>
+<h3>To subscribe to updates, enter your email address and/ or phone number and choose the topic you would like to subscribe to</h3>
+<form action="/subscribe" method="POST">
 
 	 <label>
       Email:
@@ -33,7 +26,16 @@
  	<label>
       Phone:
 		<input type="text" name="phone" placeholder="phone"/>  
-	 </label>     
+	 </label>  
+
+	 <label>
+	 	Entry Title:
+	 <select name= "entry_title">
+    {{#entries}}
+      <option value="{{entry_title}}">{{entry_title}}</option>
+    {{/entries}}
+  </select>
+   </label>
 
 	<input type="submit"></input>
 

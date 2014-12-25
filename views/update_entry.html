@@ -1,0 +1,50 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>edit an entry</title>
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
+</head>
+<body>
+
+  <form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="enter search term here"/>  
+    </label></p>
+        <input type="submit"></input>
+  </form>
+
+  <h1>Edit an Entry</h1>
+  <form action="/edit/entry/:id" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+
+    <label>
+      Title:
+      <input type="text" name="entry_title" value="{{entry_title}}"/>  
+    </label>
+    
+    <label>
+      Content:
+      <input type="text" name="entry_content" value="{{entry_content}}"/>  
+    </label>
+
+     <label>
+     Author:
+  <select type="text" name= "author_id">
+    <option value="0"></option>
+    {{#authors}}
+      <option value="{{author_id}}">{{author_name}}</option>
+    {{/authors}}
+  </select>
+  </label>
+     <input type="submit"/>
+    <p>or click <a href='/new_author'>here</a> to add a new author</p>
+    
+
+
+
+  </form>
+  <button><a href = '/'>CANCEL</a></button>
+</body>
+</html>

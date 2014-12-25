@@ -1,5 +1,13 @@
 /*CSS stylesheet for project_one*/
 
 body {
-	/*background-color: gray;*/
+	background-color: #ADD6FF;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover {
+	font-weight: bold;
 }
