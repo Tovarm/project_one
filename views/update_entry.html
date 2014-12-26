@@ -15,8 +15,8 @@
         <input type="submit"></input>
   </form>
 
-  <h1>Edit an Entry</h1>
-  <form action="/edit/entry/:id" method="POST">
+  <h1>Edit Entry {{entry_title}}</h1>
+  <form action="/edit/entry/{{entry_id}}" method="POST">
   <input type="hidden" name="_method" value="PUT">
 
     <label>
@@ -40,11 +40,9 @@
   </label>
      <input type="submit"/>
     <p>or click <a href='/new_author'>here</a> to add a new author</p>
-    
-
-
-
   </form>
   <button><a href = '/'>CANCEL</a></button>
+
+  <button><a href="/">Home</a></button>
 </body>
 </html>

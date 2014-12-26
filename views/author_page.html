@@ -19,9 +19,11 @@
 
   <h2>Welcome to my author page</h2>
   <p>---------------------------</p>
-    {{#authors}}
-      <label>Name:{{entry_id}}</label><br/>
-    {{/authors}}
+    
+        <label>Entries I've authored or edited:</br>
+      {{#entry}}
+      <a href="/entry/{{entry_id}}">{{entry_title}}</a></label><br/>
+      {{/entry}}
   <p>---------------------------</p>
     
     <button><a href="/">Home</a></button>

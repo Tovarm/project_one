@@ -16,7 +16,7 @@
   </form>
 
 <h3>To subscribe to updates, enter your email address and/ or phone number and choose the topic you would like to subscribe to</h3>
-<form action="/subscribe" method="POST">
+<form action="/subscribe/{{entry_id}}" method="POST">
 
 	 <label>
       Email:
@@ -28,14 +28,14 @@
 		<input type="text" name="phone" placeholder="phone"/>  
 	 </label>  
 
-	 <label>
+	 <!-- <label>
 	 	Entry Title:
 	 <select name= "entry_title">
     {{#entries}}
       <option value="{{entry_title}}">{{entry_title}}</option>
     {{/entries}}
   </select>
-   </label>
+   </label> -->
 
 	<input type="submit"></input>
 

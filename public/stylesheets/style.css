@@ -11,3 +11,7 @@ a{
 a:hover {
 	font-weight: bold;
 }
+
+textarea, input {
+	border: 2px solid blue;
+}

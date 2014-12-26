@@ -3,6 +3,7 @@ require 'sendgrid-ruby'
 require './db/connection.rb'
 require './lib/class_wiki.rb'
 
+
   client = SendGrid::Client.new do |client|
   client.api_user = 'tovarm'
   client.api_key = 'sendgrid33'
@@ -26,5 +27,5 @@ mail = SendGrid::Mail.new do |message|
   message.text = 'Here I am'
 end
 
-puts client.send(mail)
+# puts client.send(mail)
 
