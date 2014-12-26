@@ -22,7 +22,7 @@ end
 #-----------------------------------------------------------------------------------------
 
 get '/' do
-	entries = Entry.all
+	entries = EntryMeta.all
 	Mustache.render(File.read('./views/index.html'), {entries: entries.as_json})
 end
 
@@ -52,7 +52,6 @@ post '/subscribe/:id' do
 		return "Please enter an email address or phone number"
 	else
 	subscriber = Subscriber.create(email: params["email"], phone: params["phone"])
-
 	Subscription.create(subscriber_id: subscriber.subscriber_id, entry_id: params["id"])
 	Mustache.render(File.read('./views/confirm_subscription.html'), params.as_json)
 	end
@@ -89,19 +88,18 @@ end
 
 get '/subscribe/:id' do
 # binding.pry
-
 	Mustache.render(File.read('./views/subscribe.html'), {entry_id: params["id"]})
-
 	# entries = Entry.all
 	# Mustache.render(File.read('./views/subscribe.html'), {entries: entries.as_json})
 end
 
+## work on getting the author name to show up instead of the author id ##
 get '/entry/:id' do
-	# binding.pry
-	authors = Author.all
+	author = Author.all
 	entry = Entry.where(entry_id: params["id"])
+	# binding.pry
 	# entry = Entry.find_by entry_id: params["id"]
-	Mustache.render(File.read('./views/show_entry_page.html'), {authors: authors.as_json, entry: entry.as_json})
+	Mustache.render(File.read('./views/show_entry_page.html'), {author_name: author_name.to_a, entry: entry.as_json})
 	# Mustache.render(File.read('./views/show_entry_page.html'), {entry: entry})
 end
 
@@ -124,10 +122,10 @@ put '/edit/entry/:id' do
 	elsif params["entry_title"] == "" || params["entry_content"] == ""
 		return "Please enter a title and an entry"
 	entry = Entry.find_by(entry_id: params["id"])
-binding.pry
+# binding.pry
 	# entry.entry_title = params["entry_title"]
 	# entry.entry_content = params["entry_content"]
-	edit = Edit.create(entry_id: params["id"], author_id: params["author_id"], edit_number: params["edit_number"], edit_title: params["edit_title"], edit_content: params["edit_content"])
+	edit = Edit.create(entry_id: params["id"], author_id: params["id"], edit_title: params["edit_title"], edit_content: params["edit_content"])
 	entry = Entry.all
 	Mustache.render(File.read('./views/confirm_update.html'), {entry: entry.as_json})
 	# entry.save

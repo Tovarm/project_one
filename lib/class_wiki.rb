@@ -19,3 +19,7 @@ end
 class Subscription < ActiveRecord::Base
 
 end
+
+class Content < ActiveRecord::Base
+
+end

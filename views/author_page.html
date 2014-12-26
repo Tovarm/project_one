@@ -21,9 +21,11 @@
   <p>---------------------------</p>
     
         <label>Entries I've authored or edited:</br>
+          <ul>
       {{#entry}}
-      <a href="/entry/{{entry_id}}">{{entry_title}}</a></label><br/>
+      <li><a href="/entry/{{entry_id}}">{{entry_title}}</a></label><br/></li>
       {{/entry}}
+    </ul>
   <p>---------------------------</p>
     
     <button><a href="/">Home</a></button>
