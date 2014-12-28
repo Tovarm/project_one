@@ -1,6 +1,29 @@
-<h1>Delete Page</h1>
-<p> Are you sure you want to delete the page called #{entry/:id}?</p>
-form action="/entry/:id" method="POST"
-  input type="hidden" name="_method" value="DELETE"
-  input type="submit" value="Delete"
-a href="/pages" cancel
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>edit an entry</title>
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
+</head>
+<body>
+
+  <form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="enter search term here"/>  
+    </label></p>
+        <input type="submit"></input>
+  </form>
+
+{{#entry}}
+  <h1>Delete Entry "{{entry_title}}"</h1>
+  <p>Are you sure you want to delete entry "{{entry_title}}"?</p>
+  <form action="/delete/entry/{{entry_id}}" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+
+	<button><a href='/'>CANCEL</a></button>
+    <input type="submit"></input>
+{{/entry}}
+
+</body>
+</html>

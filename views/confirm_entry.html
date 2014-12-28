@@ -16,11 +16,11 @@
 
 	<h1>You've successfully created a new entry!</h1>
 
-		<label>Title: {{entry_title}}</label><br/>
-		<label>Content: {{entry_content}}</label><br/>
-		<!-- <label>Author:{{author_name}}</label><br/> -->
-		
-		
+  {{#entry}}
+    <label>Title: {{entry_title}}</label><br/>
+    <label>Content: {{entry_content}}</label><br/>
+    <p>Click<a href="/entry/{{entry_id}}"> here </a>to see your new entry page</p>
+	{{/entry}}
 		<button><a href="/">Home</a></button>
 </body>
 </html>

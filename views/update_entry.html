@@ -15,7 +15,9 @@
         <input type="submit"></input>
   </form>
 
-  <h1>Edit Entry {{entry_title}}</h1>
+
+{{#entry}}
+  <h1>Edit Entry "{{entry_title}}"</h1>
   <form action="/edit/entry/{{entry_id}}" method="POST">
   <input type="hidden" name="_method" value="PUT">
 
@@ -28,7 +30,7 @@
       Content:
       <input type="text" name="entry_content" value="{{entry_content}}"/>  
     </label>
-
+{{/entry}}
      <label>
      Author:
   <select type="text" name= "author_id">

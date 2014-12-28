@@ -22,9 +22,11 @@
 		<p>{{entry_content}}</p>
 		<p>-----------------</p>
 		<p>{{created_at}}</p>
-		<p>Author:<a href="/author/{{author_id}}">{{author_name}}</a></p>
+
+		<p>Author:<a href="/author/{{author_id}}">{{author_id}}</a></p>
+
 	<button><a href="/edit/entry/{{entry_id}}">Edit this entry<a></button>
-	<button><a href="/delete/:id">Delete this entry<a></button>
+	<button><a href="/delete/entry/{{entry_id}}">Delete this entry<a></button>
 	
 	<p>Sign up to receive updates about this entry- click <a href="/subscribe/{{entry_id}}">here</a> and fill out the subscribe form</p>
 	{{/entry}}
