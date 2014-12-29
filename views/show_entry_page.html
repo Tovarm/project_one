@@ -23,10 +23,13 @@
 		<p>-----------------</p>
 		<p>{{created_at}}</p>
 
-		<p>Author:<a href="/author/{{author_id}}">{{author_id}}</a></p>
-
+	{{#author}}
+		<p>Author:<a href="/author/{{author_id}}">{{author_name}}</a></p>
+	{{/author}}
 	<button><a href="/edit/entry/{{entry_id}}">Edit this entry<a></button>
 	<button><a href="/delete/entry/{{entry_id}}">Delete this entry<a></button>
+
+	<button><a href="/history/{{entry_id}}">Show History</a></button>
 	
 	<p>Sign up to receive updates about this entry- click <a href="/subscribe/{{entry_id}}">here</a> and fill out the subscribe form</p>
 	{{/entry}}

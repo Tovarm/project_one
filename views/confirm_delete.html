@@ -14,16 +14,10 @@
     </label></p>
         <input type="submit"></input>
   </form>
-
 {{#entry}}
-  <h1>Delete Entry "{{entry_title}}"</h1>
-  <p>Are you sure you want to delete entry "{{entry_title}}"?</p>
-  <form action="/delete/entry/{{entry_id}}" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-
-	<button><a href='/'>Cancel</a></button>
-    <input type="submit" value="Delete"></input>
+  <h1>You have deleted entry "{{entry_title}}"</h1>
 {{/entry}}
+  <button><a href='/'>Home</a></button>
 
 </body>
 </html>

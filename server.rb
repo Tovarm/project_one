@@ -5,10 +5,12 @@ require 'sinatra/reloader'
 require './db/connection.rb'
 require './lib/class_wiki.rb'
 
-# SEARCH  (downcase???)__-----------------------------------------------------------------
+# SEARCH  (downcase???)  -----------------------------------------------------------------
 post '/search_results' do
+	if params["search"] == ""
+		return "Please enter a search term"
 	# if Entry.exists?(:entry_title => params["search"])
-	if Entry.exists?(['entry_title LIKE ?', "%#{params["search"]}%"])
+	elsif Entry.exists?(['entry_title LIKE ?', "%#{params["search"]}%"])
   		entry = Entry.where(:entry_title => params["search"])
   		Mustache.render(File.read('./views/search_results.html'), {entry_title: params["search"], entry: entry.to_a})
 	else 
@@ -19,7 +21,8 @@ end
 #-----------------------------------------------------------------------------------------
 
 get '/' do
-	entries = Entry.all
+	entries = Entry.order(:created_at).to_a
+# binding.pry
 	Mustache.render(File.read('./views/index.html'), {entries: entries.to_a})
 end
 
@@ -35,11 +38,12 @@ post '/new_entry' do
 	elsif params["author_id"] == "0"
 		return "Please choose an author from the dropdown list or go back and add a new one"
 	else
+	author = Author.where(author_id: params["author_id"])
 	Entry.create(entry_title: params["entry_title"], entry_content: params["entry_content"], author_id: params[
-		"author_id"], revision_number: 0)
+		"author_id"], revision_of: 0)
 	entry = Entry.where(entry_title: params["entry_title"])
 # binding.pry
-	Mustache.render(File.read('./views/confirm_entry.html'), entry: entry.to_a)
+	Mustache.render(File.read('./views/confirm_entry.html'), {entry: entry.to_a, author: author.to_a})
 	end
 end
 
@@ -98,7 +102,7 @@ get '/entry/:id' do
 	entry = Entry.where(entry_id: params["id"])
 # binding.pry
 	# entry = Entry.find_by entry_id: params["id"]
-	Mustache.render(File.read('./views/show_entry_page.html'), {author: author.as_json, entry: entry.to_a})
+	Mustache.render(File.read('./views/show_entry_page.html'), {author: author.to_a, entry: entry.to_a})
 end
 
 get '/author/:id' do
@@ -114,21 +118,28 @@ get '/edit/entry/:id' do
 	Mustache.render(File.read('./views/update_entry.html'), {authors: authors.to_a, entry: entry.to_a})
 end
 
-put '/edit/entry/:id' do
-# binding.pry
-	if params["author_id"] == "0"
-		return "Please choose an author from the dropdown list, or go back to add a new one"
-	elsif params["entry_title"] == "" || params["entry_content"] == ""
-		return "Please enter a title and an entry"
-	# entry = Entry.find_by(entry_title: "Marvin")
-	entry.entry_title = params["entry_title"]
-	entry.entry_content = params["entry_content"]
-	revision_number = revision_number += 1
-	entry.save
-	udpate = Entry.create(entry_id: params["id"], author_id: params["id"], edit_title: params["edit_title"], edit_content: params["edit_content"], revision_number: revision_number += 1, revised_at: timestamp)
-	Mustache.render(File.read('./views/confirm_update.html'), {entry: entry.to_a})
 
-	end
+
+put '/edit/entry/:id' do
+	# if params["author_id"] == "0"
+	# 	return "Please choose an author from the dropdown list, or go back to add a new one"
+	# elsif params["entry_title"] == "" || params["entry_content"] == ""
+	# 	return "Please enter a title and an entry"
+	author = Author.where(author_id: params["author_id"])
+	old_entry = Entry.where(entry_id: params["id"])
+	entry = Entry.create(author_id: params["author_id"], entry_title: params["entry_title"], entry_content: params["entry_content"], revision_of: params["id"])
+	
+# binding.pry
+	Mustache.render(File.read('./views/confirm_update.html'), {entry: entry.as_json, author: author.as_json})
+
+	# entry = Entry.find_by(entry_id: params["id"])
+	# entry.entry_title = params["entry_title"]
+	# entry.entry_content = params["entry_content"]
+	# entry.author_id = params["author_id"]
+	# # revision_number = revision_number + 1
+	# entry.save
+
+	# end
 end
 
 get '/delete/entry/:id' do
@@ -138,9 +149,17 @@ get '/delete/entry/:id' do
 end
 
 delete '/delete/entry/:id' do
-binding.pry
-	entry = Entry.where(entry_id: params["id"])
-	entry.destroy
-
+# binding.pry
+entry = Entry.find(params["id"]).destroy
+Mustache.render(File.read('./views/confirm_delete.html'), {entry: entry.as_json})
 end
+
+get '/history/:id' do
+	new_entry = Entry.where(revision_of: params["id"])
+
+
+	entry = Entry.where(entry_id: params["id"])
+	Mustache.render(File.read('./views/history.html'), {entry: entry.as_json, new_entry: new_entry.as_json})
+end
+
 

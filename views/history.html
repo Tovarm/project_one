@@ -13,10 +13,10 @@
 		</label></p>
 		<input type="submit"></input>
 	</form>
-	<h1>You've successfully subscribed to receive updates for "{{entry_name}}"</h1>
-
-	<label>Email: {{email}}</label><br/>
-	<label>Phone: {{phone}}</label><br/>
+{{#entry}}
+	<h1>History of changes for entry "{{entry_title}}"</h1>
+{{/entry}}
+	
 	
 	<button><a href="/">Home</a></button>
 </body>

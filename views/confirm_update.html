@@ -13,14 +13,16 @@
     </label></p>
         <input type="submit"></input>
   </form>
-
+{{#entry}}
 	<h1>You've successfully updated an entry</h1>
 
 		<label>Title: {{entry_title}}</label><br/>
 		<label>Content: {{entry_content}}</label><br/>
-		<label>Author:{{author_id}}</label><br/>
-		
-		
+{{/entry}}
+
+{{#author}}
+    <label>Author:{{author_name}}</label><br/>
+{{/author}}		
 		<button><a href="/">Home</a></button>
 </body>
 </html>

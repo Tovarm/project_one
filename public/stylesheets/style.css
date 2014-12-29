@@ -1,7 +1,7 @@
 /*CSS stylesheet for project_one*/
 
 body {
-	background-color: #ADD6FF;
+	background-color: #9C94B5;
 }
 
 a{
@@ -13,5 +13,12 @@ a:hover {
 }
 
 textarea, input {
-	border: 2px solid blue;
+	border: 1px solid blue;
+	/*padding: 20px;*/
+	margin: 20px;
 }
+
+button {
+	border-radius: 25px;
+}
+

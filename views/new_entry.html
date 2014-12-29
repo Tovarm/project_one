@@ -6,19 +6,23 @@
   <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
 </head>
 
+<div class="container">
 <body>
 
   <form action="/search_results" method="POST">
+    <div class="form-group">
      <p><label>
       Search:
       <input type="text" name="search" placeholder="enter search term here"/>  
     </label></p>
         <input type="submit"></input>
+    </div>
+
   </form>
   
   <h1>Create a new entry here:</h1> 
   <form action="/new_entry" method="POST">
-    
+  <div class="form-group">
     <label>
      Author:
   <select type="text" name= "author_id">
@@ -28,23 +32,25 @@
     {{/authors}}
   </select>
   </label>
-
+</div>
+    <div class="form-group">
     <label>
       Title:
       <input type="text" name="entry_title" placeholder="title"/>  
     </label>
-
+</div>
     <label>
       Content:
 
 		<!-- <input type="text" name="entry_content" placeholder="content"/>  -->
     <textarea name="entry_content" cols="50" rows="10" placeholder="content"></textarea>
 	 </label>   
-
+</div>
 
      <input type="submit"/>
 
       <p>or click <a href='/new_author'>here</a> to add yourself as an author</p>
   <button><a href = '/'>CANCEL and go back HOME</a></button>
 </body>
+</div>
 </html>

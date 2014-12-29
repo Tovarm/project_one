@@ -30,7 +30,6 @@
       Content:
       <input type="text" name="entry_content" value="{{entry_content}}"/>  
     </label>
-{{/entry}}
      <label>
      Author:
   <select type="text" name= "author_id">
@@ -45,6 +44,7 @@
   </form>
   <button><a href = '/'>CANCEL</a></button>
 
-  <button><a href="/">Home</a></button>
+  <button><a href="/entry/{{entry_id}}">Back to Entry</a></button>
+{{/entry}}
 </body>
 </html>

@@ -19,6 +19,11 @@
   {{#entry}}
     <label>Title: {{entry_title}}</label><br/>
     <label>Content: {{entry_content}}</label><br/>
+
+  {{#author}}
+    <label>Author: <a href="/author/{{author_id}}">{{author_name}}</a></label><br/>
+ {{/author}} 
+ 
     <p>Click<a href="/entry/{{entry_id}}"> here </a>to see your new entry page</p>
 	{{/entry}}
 		<button><a href="/">Home</a></button>
