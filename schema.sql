@@ -7,7 +7,9 @@ CREATE TABLE subscribers(subscriber_id serial primary key, email varchar(50), ph
 
 CREATE TABLE subscriptions(subscription_id serial primary key, subscriber_id integer, entry_id integer);
 
-CREATE TABLE entries(entry_id serial primary key, author_id integer, created_at timestamp, entry_title varchar(255), entry_content text, revision_of integer, updated_at timestamp);
+CREATE TABLE entries(primary_id serial primary key, entry_id serial, author_id integer, entry_title varchar(100), entry_content text, created_at timestamp);
+
+-- INSERT INTO archive SELECT * FROM entries WHERE entry_id: 
 
 -- CREATE TABLE entries(entry_id serial primary key, author_id integer, version_number integer, created_at timestamp);
 

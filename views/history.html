@@ -13,11 +13,15 @@
 		</label></p>
 		<input type="submit"></input>
 	</form>
-{{#entry}}
+
+	<!-- #-------------- SEARCH -----------------# -->
+
 	<h1>History of changes for entry "{{entry_title}}"</h1>
+{{#entry}}
+	Entry: <a href="/entry/{{entry_id}}">{{entry_title}}</a></br>
 {{/entry}}
 	
 	
-	<button><a href="/">Home</a></button>
+	</br><button><a href="/">Home</a></button>
 </body>
 </html>
