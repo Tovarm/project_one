@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Confirm</title>
-  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css"/> 
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/> 
 </head>
 <body>
 	<form action="/search_results" method="POST">
@@ -18,11 +18,14 @@
 
 		<label>Title: {{entry_title}}</label><br/>
 		<label>Content: {{entry_content}}</label><br/>
-{{/entry}}
 
 {{#author}}
     <label>Author:<a href="/author/{{author_id}}">{{author_name}}</a></label><br/>
-{{/author}}		
+{{/author}}   
+    <p>Click<a href="/entry/{{entry_id}}"> here </a>to see your updated entry page</p>
+{{/entry}}
+
+
 		<button><a href="/">Home</a></button>
 </body>
 </html>

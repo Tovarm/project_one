@@ -19,37 +19,26 @@ post '/search_results' do
 end
 
 #-----------------------------------------------------------------------------------------
-get '/' do
 	# entries = Entry.order(:created_at).last
+	# entry = Entry.select([primary_id:)Entry.group(:primary_id).first
 
-	entries = Entry.where(primary_id: Entry.maximum("primary_id").group(:entry_id))
-binding.pry
+
+	# entries = Entry.where(primary_id: Entry.group(:entry_id))
+
+	# entries = Entry.select(primary_id: Entry.maximum("primary_id").group(:entry_id))
+# binding.pry
 	# entries = Entry.all
+	# entries = Entry.where(primary_id: Entry.maximum("primary_id").group(:entry_id))
 
-	# entries = entries.order(:created_at)
+get '/' do
+	# SELECT author_id, entry_title, entry_content FROM entries WHERE primary_id in(SELECT max(primary_id) FROM entries group by entry_id);
+
+	entries = Entry.order(:created_at)
+	# entries = Entry.select([:primary_id]).group(:entry_id, :primary_id).last
 	Mustache.render(File.read('./views/index.html'), {entries: entries.as_json})
 end
 
-
-
-
-	# entries = Entry.where(:revision_of => params["entry_id"])
-
-	# entry = Entry.order(:revision_of)
-	# entries = Entry.order(entry)
-
-
-# Entry.find
-# entries = Entry.exists?(:revision_of => params["entry_id"])
-
-
 # binding.pry
-# if entry_id exists in revision_of column, show most updated row of that entry_id in the revision_of column
-# 	if entry_id doesn't exist in revision_of column, show that row where revision_of 0
-
-	
-	# entries = Entry.where.not(revision_of: 0)
-	 
 
 get '/new_entry' do
 	authors = Author.all
@@ -116,8 +105,6 @@ end
 get '/subscribe/:id' do
 # binding.pry
 	Mustache.render(File.read('./views/subscribe.html'), {entry_id: params["id"]})
-	# entries = Entry.all
-	# Mustache.render(File.read('./views/subscribe.html'), {entries: entries.to_a})
 end
 
 ###### work on getting the author name to show up instead of the author id ######
@@ -126,7 +113,7 @@ get '/entry/:id' do
 	# entry = Entry.where(entry_id: params["id"])
 # binding.pry
 	# entry = Entry.find_by entry_id: params["id"]
-	entry = Entry.where(entry_id: params["id"])
+	entry = Entry.where(entry_id: params["id"]).last
 	Mustache.render(File.read('./views/show_entry_page.html'), {author: author.to_a, entry: entry.as_json})
 end
 
@@ -138,9 +125,9 @@ get '/author/:id' do
 end
 
 get '/edit/entry/:id' do
-	entry = Entry.where(entry_id: params["id"])
+	entry = Entry.where(entry_id: params["id"]).last
 	authors = Author.all
-	Mustache.render(File.read('./views/update_entry.html'), {authors: authors.to_a, entry: entry.to_a})
+	Mustache.render(File.read('./views/update_entry.html'), {authors: authors.as_json, entry: entry.as_json})
 end
 
 
@@ -159,40 +146,29 @@ put '/edit/entry/:id' do
 end
 # binding.pry
 
-	# entry = Entry.find_by(entry_id: params["id"])
-	# entry.entry_title = params["entry_title"]
-	# entry.entry_content = params["entry_content"]
-	# entry.author_id = params["author_id"]
-	# entry.revision_of = params["id"]
-	# entry.save
 	
-
-
-
 get '/delete/entry/:id' do
-	entry = Entry.where(entry_id: params["id"])
-	Mustache.render(File.read('./views/delete.html'), {entry: entry.to_a})
+	entry = Entry.where(entry_id: params["id"]).last
+	Mustache.render(File.read('./views/delete.html'), {entry: entry.as_json})
 # binding.pry
 end
 
+
 delete '/delete/entry/:id' do
-	# l = Location.where(["entry_id = ?", params["id"]).select("primary_id")
-
-
-entry = Entry.where(entry_id: params["id"]).select("primary_id").to_a
+	entry = Entry.where(entry_id: params["id"]).select("primary_id").to_a
 # binding.pry
-
-
 	deleted_entries = Entry.destroy(entry)
-# 	entry = Entry.where(entry_id: params["id"]).destroy
-	Mustache.render(File.read('./views/confirm_delete.html'), {entry: deleted_entries.as_json})
+	Mustache.render(File.read('./views/confirm_delete.html'), {entry: entry.as_json})
 end
 
 get '/history/:id' do
-	# new_entry = Entry.where(revision_of: params["id"])
-
+	# entry = Entry.where(entry_id: params["id"]).select("primary_id").to_a
+	# entry = Entry.order(:created_at)
 	entry = Entry.where(entry_id: params["id"])
-	# entry = Entry.where(entry_id: params["id"])
-	Mustache.render(File.read('./views/history.html'), {entry: entry.as_json})
+	entry.order(:created_at)
+	
+	# entry = Entry.all
+# binding.pry
+	Mustache.render(File.read('./views/history.html'), {entry: entry.as_json, entry_title: params["entry_title"]})
 end
 
