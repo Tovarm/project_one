@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<title>Confirm</title>
+	<title>History</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" /> 
 </head>
 <body>
@@ -15,13 +15,19 @@
 	</form>
 
 						<!-- SEARCH -->
-
-	<h1>History of changes <!-- for entry "{{entry_title}}" --></h1>
+{{#entry_title}}
+	<h1>History of changes for entry "{{entry_title}}"</h1>
+{{/entry_title}}
 
 	<ol>
 {{#entry}}
-	<li><a href="/entry/{{entry_id}}">{{entry_title}}</a></li></br>
+	<li><a href="/entry/{{entry_id}}/{{primary_id}}">{{entry_title}}</a></li></br>
 {{/entry}}
+
+
+	<button><a href="/entry/{{entry_id}}">Back to entry</a></button>
+
+
 	</ol>
 	
 	</br><button><a href="/">Home</a></button>
