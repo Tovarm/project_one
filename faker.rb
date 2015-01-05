@@ -10,9 +10,9 @@ author = Author.create(author_name: Faker::Name.name, email: Faker::Internet.fre
 end
 
 
-10.times do |subscriber|
-subscriber = Subscriber.create(email: Faker::Internet.free_email, phone: Faker::PhoneNumber.phone_number )	
-end
+# 10.times do |subscriber|
+# subscriber = Subscriber.create(email: Faker::Internet.free_email, phone: Faker::PhoneNumber.phone_number )	
+# end
 
 
 # 50.times do |entry|

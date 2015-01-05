@@ -5,17 +5,24 @@
 	<meta charset="UTF-8"/>
 	<title>All Authors</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/> 
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Roboto' rel='stylesheet' type='text/css'>
+</head>
 </head>
 
 <body>
-
-	<form action="/search_results" method="POST">
-		<p><label>
-			Search:
-			<input type="text" name="search" placeholder="enter search term here"/>  
-		</label></p>
-		<input type="submit"></input>
-	</form>
+	<h1>List of Authors or Editors</h1>
+	<ul class="nav">
+  <li><a href='/'>Home</a></li>
+  <li><a href='/new_entry'>Add an article</a></li>
+  <li><form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="search"/>  
+    </label></p>
+        <input type="submit"></input>
+    </form></li>
+</ul>
 
 	{{#author}}
 		<a href="/author/{{author_id}}">{{author_name}}</a></p>

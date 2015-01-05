@@ -3,21 +3,27 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>History</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Roboto' rel='stylesheet' type='text/css'>
+
+</head>
 </head>
 <body>
-	<form action="/search_results" method="POST">
-		<p><label>
-			Search:
-			<input type="text" name="search" placeholder="enter search term here"/>  
-		</label></p>
-		<input type="submit"></input>
-	</form>
-
+	<div class="search">
+	<ul class="nav">
+  <li><a href='/'>Home</a></li>
+  <li><a href='/new_entry'>Add an article</a></li>
+  <li><form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="search"/>  
+    </label></p>
+        <input type="submit"></input>
+    </form></li>
+</ul>	
+</div>
 						<!-- SEARCH -->
-{{#entry_title}}
-	<h1>History of changes for entry "{{entry_title}}"</h1>
-{{/entry_title}}
+	<h1>History</h1>
 
 	<ol>
 {{#entry}}
@@ -25,7 +31,7 @@
 {{/entry}}
 
 
-	<button><a href="/entry/{{entry_id}}">Back to entry</a></button>
+	<!-- <button><a href="/entry/{{entry_id}}">Back to entry</a></button> -->
 
 
 	</ol>

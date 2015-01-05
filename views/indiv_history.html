@@ -5,17 +5,24 @@
 	<meta charset="UTF-8"/>
 	<title>{{title}}</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/> 
+	<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Roboto' rel='stylesheet' type='text/css'>
+
+</head>
 </head>
 
 <body>
 
-	<form action="/search_results" method="POST">
-		<p><label>
-			Search:
-			<input type="text" name="search" placeholder="search"/>  
-		</label></p>
-		<input type="submit"></input>
-	</form>
+	<ul class="nav">
+  <li><a href='/'>Home</a></li>
+  <li><a href='/new_entry'>Add an article</a></li>
+  <li><form action="/search_results" method="POST">
+     <p><label>
+      Search:
+      <input type="text" name="search" placeholder="search"/>  
+    </label></p>
+        <input type="submit"></input>
+    </form></li>
+</ul>
 <!-- {{#entry}} -->
 		<h1>{{entry_title}}</h1>
 		<!-- <p>{{entry_content}}</p> -->

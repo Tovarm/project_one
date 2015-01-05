@@ -2,6 +2,9 @@ require 'pry'
 require 'sinatra'
 require 'mustache'
 require 'redcarpet'
+require 'sendgrid-ruby'
+require 'twilio-ruby'
+require './sendgrid_api.rb'
 require 'sinatra/reloader'
 require './db/connection.rb'
 require './lib/class_wiki.rb'
@@ -62,8 +65,8 @@ post '/new_author' do
 		return "That author already exists"
 	elsif Author.exists?(:email => "#{params["email"]}")
 		return "That email already exists"
-	elsif Author.exists?(:phone => "#{params["phone"]}")
-		return "That phone number already exists"
+	elsif params["email"] !~ (/\w+@\w+\.com/)
+		return "Please enter a valid email address"
 	else
 		Author.create(author_name: params["author_name"], email: params["email"], phone: params["phone"])
 		Mustache.render(File.read('./views/confirm_author.html'), params.as_json)
@@ -76,21 +79,26 @@ get '/all_authors' do
 	Mustache.render(File.read('./views/all_authors.html'), {author: author.to_a})
 end
 
+get '/subscribe/:id' do
+# binding.pry
+	Mustache.render(File.read('./views/subscribe.html'), {entry_id: params["id"]})
+end
+
 post '/subscribe/:id' do
 # binding.pry	
 	if params["email"].chomp == "" && params["phone"].chomp == ""
 		return "Please enter an email address or phone number"
+	elsif params["email"] !~ (/\w+@\w+\.com/)
+		return "Please enter a valid email address"
+	elsif Subscription.exists?(:subscriber_id => "#{params["subscriber_id"]}") && Subscription.exists?(:entry_id => "#{params["id"]}")
+		return "You are already subscribed to this topic"
+		# Subscription.create(subscriber_id: subscriber.subscriber_id, entry_id: params["id"])
 	else
 		subscriber = Subscriber.create(email: params["email"], phone: params["phone"])
 		Subscription.create(subscriber_id: subscriber.subscriber_id, entry_id: params["id"])
 		entry = Entry.where(entry_id: params["id"])
 		Mustache.render(File.read('./views/confirm_subscription.html'), params.as_json)
 	end
-end
-
-get '/subscribe/:id' do
-# binding.pry
-	Mustache.render(File.read('./views/subscribe.html'), {entry_id: params["id"]})
 end
 
 get '/entry/:id' do
@@ -123,9 +131,39 @@ put '/edit/entry/:id' do
 		return "Please enter a title and an entry"
 	else
 		author = Author.where(author_id: params["author_id"])
-		# # old_entry = Entry.where(entry_id: param	s["id"])
 		entry = Entry.create(entry_id: params["id"], author_id: params["author_id"], entry_title: params["entry_title"], entry_content: params["entry_content"])
-		Mustache.render(File.read('./views/confirm_update.html'), {entry: entry.as_json, author: author.as_json})
+#-------------- notifications -------------#
+	subsciber = Subscriber
+
+	notification = Mustache.render(File.read('./notify.html'), {entry: entry.as_json})
+# binding.pry
+#-------------- Sendgrid ------------------#
+  client = SendGrid::Client.new do |client|
+  client.api_user = 'tovarm'
+  client.api_key = 'sendgrid33'
+end
+
+mail = SendGrid::Mail.new do |message|
+  message.to = ["tovamosk@gmail.com"],
+  message.from = 'blob@blobby.com'
+  message.subject = 'Edit notification'
+  message.text = notification
+end
+	# puts client.send(mail)
+#---------------- Sendgrid -----------------#
+#---------------- twilio -------------------#
+account_sid = 'ACbb965bef42d969da2a19e0fb68d75577' 
+auth_token = '97f0553078b9b21f1b52d2f185e1ea41' 
+ 
+@client = Twilio::REST::Client.new account_sid, auth_token 
+ 
+# @client.account.messages.create({
+# 	:from => '+13479675006',
+# 	:to => '9176648369',
+# 	:body => notification    
+# })
+#---------------- twilio -------------------#
+	Mustache.render(File.read('./views/confirm_update.html'), {entry: entry.as_json, author: author.as_json})
 	end
 end
 # binding.pry
@@ -142,13 +180,12 @@ delete '/delete/entry/:id' do
 	entry = Entry.where(entry_id: params["id"]).select("primary_id").to_a
 # binding.pry
 	deleted_entries = Entry.destroy(entry)
-	entry_name = Entry.find_by(entry_id: params["id"])
-	Mustache.render(File.read('./views/confirm_delete.html'), {entry_name: entry_name.as_json})
+	entry = Entry.find_by(entry_id: params["id"])
+	Mustache.render(File.read('./views/confirm_delete.html'), {entry: entry.as_json})
 end
 
 get '/history/:id' do
-	# entry = Entry.where(entry_id: params["id"]).select("primary_id").to_a
-	entry = Entry.where(entry_id: params["id"])
+	entry = Entry.where(entry_id: params["id"]).order(:primary_id)
 	Mustache.render(File.read('./views/history.html'), {entry: entry.as_json, entry_title: params["entry_title"]})
 end
 

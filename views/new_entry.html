@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8"/>
   <title>Create Entry</title>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/> 
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Roboto' rel='stylesheet' type='text/css'>
+
+</head> 
 </head>
 
 <div class="container">
 <body>
 
-  <form action="/search_results" method="POST">
-    <div class="form-group">
+ <ul class="nav">
+  <li><a href='/'>Home</a></li>
+  <li><a href='/new_entry'>Add an article</a></li>
+  <li><form action="/search_results" method="POST">
      <p><label>
       Search:
-      <input type="text" name="search" placeholder="enter search term here"/>  
+      <input type="text" name="search" placeholder="search"/>  
     </label></p>
         <input type="submit"></input>
-    </div>
-
-  </form>
+    </form></li>
+</ul>
   
   <h1>Create a new entry here:</h1> 
   <form action="/new_entry" method="POST">
-  <div class="form-group">
+  <!-- <div class="form-group"> -->
     <label>
      Author:
   <select type="text" name= "author_id">
@@ -32,24 +36,25 @@
     {{/authors}}
   </select>
   </label>
-</div>
-    <div class="form-group">
+<!-- </div> -->
+    <!-- <div class="form-group"> -->
     <label>
       Title:
-      <input type="text" name="entry_title" placeholder="title"/>  
+      <!-- <input type="text" name="entry_title" placeholder="title"/>  -->
+      <textarea name="entry_title" cols="50" rows="1" placeholder="title"></textarea> 
     </label>
-</div>
+<!-- </div> -->
     <label>
       Content:
 
 		<!-- <input type="text" name="entry_content" placeholder="content"/>  -->
-    <textarea name="entry_content" cols="50" rows="10" placeholder="please enter content in markdown"></textarea>
+    <textarea name="entry_content" cols="50" rows="10" placeholder="please use markdown when creating your entry"></textarea>
 	 </label>   
 </div>
 
      <input type="submit"/>
 
-      <p>or click <a href='/new_author'>here</a> to add yourself as an author</p>
+      <p>or click <button><a href='/new_author'>here</a></button> to add yourself as an author</p>
   <button><a href = '/'>CANCEL and go back HOME</a></button>
 </body>
 </div>

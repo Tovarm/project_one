@@ -4,16 +4,23 @@
   <meta charset="UTF-8">
   <title>edit an entry</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/> 
+  <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Roboto' rel='stylesheet' type='text/css'>
+
+</head>
 </head>
 <body>
 
-  <form action="/search_results" method="POST">
+  <ul class="nav">
+  <li><a href='/'>Home</a></li>
+  <li><a href='/new_entry'>Add an article</a></li>
+  <li><form action="/search_results" method="POST">
      <p><label>
       Search:
-      <input type="text" name="search" placeholder="enter search term here"/>  
+      <input type="text" name="search" placeholder="search"/>  
     </label></p>
         <input type="submit"></input>
-  </form>
+    </form></li>
+</ul>
 
 
 {{#entry}}
@@ -23,12 +30,13 @@
 
     <label>
       Title:
-      <input type="text" name="entry_title" value="{{entry_title}}"/>  
+      <textarea name="entry_title" cols="50" rows="1" placeholder="title" required>{{entry_title}}</textarea> 
+      <!-- <input type="text" name="entry_title" value="{{entry_title}}"/>   -->
     </label>
     
     <label>
       Content:
-      <textarea name="entry_content" cols="50" rows="10">{{entry_content}}</textarea>
+      <textarea name="entry_content" cols="50" rows="10" placeholder="content" required>{{entry_content}}</textarea>
 
 <!--       <input type="text" name="entry_content" value="{{entry_content}}"/>  
  -->    </label>

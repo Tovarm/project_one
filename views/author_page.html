@@ -4,15 +4,22 @@
   <meta charset="UTF-8"/>
   <title>Author</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" /> 
+  <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Roboto' rel='stylesheet' type='text/css'>
+
+</head>
 </head>
 <body>
-  <form action="/search_results" method="POST">
+  <ul class="nav">
+  <li><a href='/'>Home</a></li>
+  <li><a href='/new_entry'>Add an article</a></li>
+  <li><form action="/search_results" method="POST">
      <p><label>
       Search:
-      <input type="text" name="search" placeholder="enter search term here"/>  
+      <input type="text" name="search" placeholder="search"/>  
     </label></p>
         <input type="submit"></input>
-  </form>
+    </form></li>
+</ul>
 
 
   <h1>{{author.author_name}}</h1>
@@ -23,7 +30,7 @@
         <label>Entries I've authored or edited:</br>
           <ul>
       {{#entry}}
-      <li><a href="/entry/{{entry_id}}">{{entry_title}}</a></label><br/></li>
+      <li><a href="/entry/{{entry_id}}/{{primary_id}}">{{entry_title}}</a></label><br/></li>
       {{/entry}}
     </ul>
   <p>---------------------------</p>

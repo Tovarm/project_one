@@ -9,23 +9,23 @@ require './lib/class_wiki.rb'
   client.api_key = 'sendgrid33'
 end
 
-
-subscriber = Subscriber.all
-
-subscriber.each do |person|                                                                                    
-subscriber = person["email"]                                                                                         
-# binding.pry
-end
-
-
-
-
 mail = SendGrid::Mail.new do |message|
-  # message.to = subscriber
+  message.to = ["tovamosk@gmail.com"]
   message.from = 'blob@blobby.com'
-  message.subject = 'Hello world!'
-  message.text = 'Here I am'
+  message.subject = 'Update notification!'
+  message.text = 'This is to notify you that the Wiki entry you subscribed to- {{entry_title}}- has been modified'
 end
 
 # puts client.send(mail)
+
+# subscriber = Subscriber.all
+
+# subscriber.each do |person|                                                                                    
+# subscriber = person["email"]                                                                                         
+# # binding.pry
+# end
+
+
+
+
 

@@ -1,24 +1,43 @@
 /*CSS stylesheet for project_one*/
 
 body {
-	background-color: #9C94B5;
+	margin-left: 50px;
+	margin-right: 50px;
+	background-color: #47D1FF;
+	font-family: roboto;
+	font-size: 18px;
+}
+
+h1{
+	text-align: center;
+	margin-left: 250px;
+	font-family: 'Cabin Sketch';
+	font-size: 45px;
+
 }
 
 a{
 	text-decoration: none;
+	color: #680000;
 }
 
 a:hover {
 	font-weight: bold;
 }
 
-textarea, input {
-	border: 1px solid blue;
-	/*padding: 20px;*/
-	margin: 20px;
-}
-
 button {
 	border-radius: 25px;
 }
 
+.search, input, textarea {
+	border-radius: 5px;
+	padding: 5px;
+	margin: 0px;
+	vertical-align: middle;
+}
+
+.nav{
+	list-style-type: none;
+	float: right;
+	font-size: 19px;
+}
