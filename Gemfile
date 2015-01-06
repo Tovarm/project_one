@@ -1,8 +1,10 @@
-require 'pry'
-require 'sinatra'
-require 'mustache'
-require 'redcarpet'
-require 'sendgrid-ruby'
-require 'twilio-ruby'
-require 'sinatra/reloader'
-require 'thin'
+source "https://www.rubygems.org"
+
+gem 'pry'
+gem 'sinatra'
+gem 'mustache'
+gem 'redcarpet'
+gem 'sendgrid-ruby'
+gem 'twilio-ruby'
+gem 'sinatra/reloader'
+gem 'thin'
