@@ -90,14 +90,18 @@ post '/subscribe/:id' do
 		return "Please enter an email address or phone number"
 	elsif params["email"] !~ (/\w+@\w+\.com/)
 		return "Please enter a valid email address"
-	elsif Subscription.exists?(:subscriber_id => "#{params["subscriber_id"]}") && Subscription.exists?(:entry_id => "#{params["id"]}")
-		return "You are already subscribed to this topic"
-		# Subscription.create(subscriber_id: subscriber.subscriber_id, entry_id: params["id"])
+	elsif Subscriber.exists?(:email => "#{params["email"]}") 
+
+	elsif Subscriber.exists?(:subscriber_id => "#{params["subscriber_id"]}")
+		Subscription.create(subscriber_id: subscriber.subscriber_id, entry_id: params["id"])
+		Mustache.render(File.read('./views/confirm_subscription.html'), params.as_json)
+
 	else
 		subscriber = Subscriber.create(email: params["email"], phone: params["phone"])
 		Subscription.create(subscriber_id: subscriber.subscriber_id, entry_id: params["id"])
 		entry = Entry.where(entry_id: params["id"])
 		Mustache.render(File.read('./views/confirm_subscription.html'), params.as_json)
+		
 	end
 end
 
@@ -133,7 +137,7 @@ put '/edit/entry/:id' do
 		author = Author.where(author_id: params["author_id"])
 		entry = Entry.create(entry_id: params["id"], author_id: params["author_id"], entry_title: params["entry_title"], entry_content: params["entry_content"])
 #-------------- notifications -------------#
-	subsciber = Subscriber
+	subscriber = Subscriber
 
 	notification = Mustache.render(File.read('./notify.html'), {entry: entry.as_json})
 # binding.pry

@@ -27,6 +27,7 @@ a:hover {
 
 button {
 	border-radius: 25px;
+	font-size: 12px;
 }
 
 .search, input, textarea {
@@ -34,10 +35,12 @@ button {
 	padding: 5px;
 	margin: 0px;
 	vertical-align: middle;
+	font-size: 12px;
 }
 
 .nav{
 	list-style-type: none;
 	float: right;
 	font-size: 19px;
+	font-family: roboto;
 }
