@@ -1,13 +1,13 @@
-require 'pry'
-require 'sinatra'
-require 'mustache'
-require 'redcarpet'
-require 'sendgrid-ruby'
-require 'twilio-ruby'
-require './sendgrid_api.rb'
-require 'sinatra/reloader'
-require './db/connection.rb'
 require './lib/class_wiki.rb'
+require './db/connection.rb'
+require './sendgrid_api.rb'
+# require 'pry'
+# require 'sinatra'
+# require 'mustache'
+# require 'redcarpet'
+# require 'sendgrid-ruby'
+# require 'twilio-ruby'
+# require 'sinatra/reloader'
 
 
 # SEARCH  (downcase???)  -----------------------------------------------------------------
