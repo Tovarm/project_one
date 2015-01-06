@@ -1,0 +1,8 @@
+require 'pry'
+require 'sinatra'
+require 'mustache'
+require 'redcarpet'
+require 'sendgrid-ruby'
+require 'twilio-ruby'
+require 'sinatra/reloader'
+require 'thin'
