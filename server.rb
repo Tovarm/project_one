@@ -9,6 +9,10 @@ require 'sendgrid-ruby'
 require 'twilio-ruby'
 require 'sinatra/reloader'
 
+after do
+  ActiveRecord::Base.connection.close
+end
+
 
 # SEARCH  (downcase???)  -----------------------------------------------------------------
 post '/search_results' do
@@ -101,7 +105,7 @@ post '/subscribe/:id' do
 		Subscription.create(subscriber_id: subscriber.subscriber_id, entry_id: params["id"])
 		entry = Entry.where(entry_id: params["id"])
 		Mustache.render(File.read('./views/confirm_subscription.html'), params.as_json)
-		
+
 	end
 end
 
