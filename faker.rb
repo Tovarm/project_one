@@ -5,7 +5,7 @@ require './lib/class_wiki'
 require './db/connection.rb'
 
 
-10.times do |author|
+20.times do |author|
 author = Author.create(author_name: Faker::Name.name, email: Faker::Internet.free_email, phone: Faker::PhoneNumber.phone_number )	
 end
 
